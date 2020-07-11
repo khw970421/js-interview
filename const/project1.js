@@ -66,5 +66,31 @@ const sayHello1 = function() {
 
     //네스팅된 스코프(Nested scopes)에서의 렉시컬 스코핑(lexical scoping)
 // 함수가 다른 함수 내부에서 정의되었다면, 내부 함수는 외부 함수의 변수에 접근할 수 있다. 이런 행동을 렉시컬 스코핑(lexical scoping)이라고 부른다.
+// 추가적으로 렉시컬 스코핑(정적스코핑)이란 함수를 어디서 선언하였는지에 따라 상위 스코프를 결정하는 것입니다.
+
+//case1 : bar()함수의 a는 가까이있는 전역변수 a를 가르킨다.
+// 가르키다가 전역변수 a가 바뀌므로 전역변수를 내용이 john으로 바뀌어 john이 출력
+var a = "jmnote";
+function bar() {
+    console.log(a); // jmnote
+}
+function foo() {
+    a = "john";
+    bar();
+}
+foo();
+
+//case2 : bar()함수의 a1는 가까이있는 전역변수 a를 가르킨다. 가까이있는 전역변수 a1을 가르킨다.
+// 그냥계속해서 전역변수 a1 가르키므로 john이라는 foo1함수와는 상관없이 jmnote를 가르킨다.
+var a1 = "jmnote";
+function bar1() {
+    console.log(a1); // jmnote
+}
+function foo1() {
+    var a1 = "john";        //전역변수가 jmnote에서 john으로 바뀌는게 아닌 지역변수에서 새로운 a1이 생성되므로
+    bar1();
+}
+
+bar1();
 
 //정리 : 스코프는 어떠한 범위, 호이스팅은 어떠한 변수를 맨위로 올려 선언하는 것
