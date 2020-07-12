@@ -15,7 +15,8 @@ function k(){
 
 //let과 const 공통점 == var와 let const의 차이점
 //var는 재선언이 가능, 나머지는 불가능
-//var는 호이스팅으로 인해 undefined를 출력, const,let은 호이스팅으로 인해 ReferenceError출력
+//var는 호이스팅으로 인해 undefined를 출력,
+// const,let은 호이스팅은 하였으나 변수가 초기화 전에 access하려하면 그 위치가 TDZ이므로  ReferenceError출력
 //var는 함수scope, const, let은 블록scope를 갖는다.
 function a(){
     var p=10;
@@ -29,7 +30,7 @@ var h=15;
 {
     var h=10;
 }
-console.log(h);     //10의 결과 출력 : 함수가 따로 없으므로 h는 마지막에 나온 10을 나타냄
+console.log(h);     //10의 결과 출력 var는 함수 스코프 이므로 { //... } 블록 스코프의 영향을 받지 않는다.
 
 var h1=15;
 function k(){
