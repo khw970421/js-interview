@@ -1,11 +1,11 @@
-//typeof의 결과값은 6개로
+//typeof의 결과값은 7개로
 // ‘undefined’
 // ‘boolean’
 // ‘number’
 // ‘string’
 // ‘object’
 // ‘function’
-
+// 'symbol'
 
 //전역객체 : 모든 객체는 전역객체의 프로퍼티이다.
 function func(){
@@ -95,8 +95,8 @@ var len = str.length; // 문자열 프로퍼티인 length 사용
 
 
 /*정리
-typeof로 얻을수있는 데이터 타입은 총 6개로 string,number,boolean,undefined,function,object 이다.
-이때 string, number,boolean,undefined는 원시타입에 속하고 (symbol null추가)
+typeof로 얻을수있는 데이터 타입은 총 7개로 string,number,boolean,symbol,undefined,function,object 이다.
+이때 string, number,boolean,symbol,undefined는 원시타입에 속하고 (null추가)
 object, function은 참조타입에 속한다.
 
 이때 원시타입의 4가지 string number boolean symbol타입은 래퍼객체에 속해 필요에 따라 객체화가 가능하다.(함수를 사용가능)
