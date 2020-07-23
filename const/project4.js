@@ -1,11 +1,12 @@
-function Prefixer(prefix) {
-    this.prefix = prefix;
+function createObject() {
+    console.log('Inside `createObject`:', this.foo, this);
+    let a= {
+        foo: 42,
+        bar: function () {
+            console.log('Inside `bar`:', this.foo, this);
+        }
+
+    };
+    return a;
 }
-
-Prefixer.prototype.prefixArray = function (arr) {
-    // this는 상위 스코프인 prefixArray 메소드 내의 this를 가리킨다.
-    return arr.map(x => `${this.prefix}  ${x}`);
-};
-
-const pre = new Prefixer('Hi');
-console.log(pre.prefixArray(['Lee', 'Kim']));
+createObject.call({foo: 21}).bar();

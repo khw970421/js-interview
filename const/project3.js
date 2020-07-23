@@ -45,7 +45,7 @@ foo();
 
 /*함수를 호출하는 4가지 방법
 1. 함수 호출
-2. 메소드 호출
+2. 메소드 호출(
 3. 생성자 함수 호출 => new 연산자를 사용하여 호출 (this 바인딩이 일단 함수호출과는 다르다)
 4. apply, bind 사용
 
@@ -99,10 +99,9 @@ add.call(o, 5, 7); // 16
 add.apply(o, [10, 20]); // 34
 
 /* 화살표 함수(this에 바인딩할 객체가 정적)  vs 일반 함수(this에 바인딩할 객체가 동적) => this의 차이
-함수를 선언할 때 this에 바인딩할 객체가 정적으로 결정되는 것이 아니고,
+일반함수 : 함수를 선언할 때 this에 바인딩할 객체가 정적으로 결정되는 것이 아니고,
 함수를 호출할 때 함수가 어떻게 호출되었는지에 따라 this에 바인딩할 객체가 동적으로 결정된다.
-화살표 함수는 this와 arguments를 바인딩하지 않는다
-화살표 함수는 this와 arguments를 바인딩하지 않는다. 그 대신, 일반적인 this와 arguments와 동일한 범위를 가지고 있다.
+화살표 함수 : this와 arguments를 바인딩하지 않는다. 그 대신, 일반적인 this와 arguments와 동일한 범위를 가지고 있다.
  */
 
 function createObject() {
@@ -111,8 +110,8 @@ function createObject() {
         foo: 42,
         bar: function() {
             console.log('Inside `bar`:', this.foo, this);
-        },
-    };
+        }
+    };                                  //return 사이의 { }에 있는 객체에 메소드인 bar는 결국 그 범위안에서의 foo를 찾아 42가 나온다.
 }
 createObject.call({foo: 21}).bar();
 
@@ -125,7 +124,7 @@ function createObject() {
     console.log('Inside `createObject`:', this.foo, this);
     return {
         foo: 42,
-        bar: () => console.log('Inside `bar`:', this.foo, this),
+        bar: () => console.log('Inside `bar`:', this.foo, this)
     };
 }
 createObject.call({foo: 21}).bar();
@@ -135,6 +134,6 @@ Inside `createObject`: 21, {foo: 21}
 Inside `bar`: 21, {foo: 21}
  */
 //즉 화살표 함수가 현재 환경의 this를 따르게 하고 싶을 때 유용하다
-
+//일반적인 this와 arguments와 동일한 범위를 가지고 있다. 같은 this 21로 인식한다.
 
 //출처 : https://www.yceffort.kr/2020/05/difference-between-function-and-arrow/
