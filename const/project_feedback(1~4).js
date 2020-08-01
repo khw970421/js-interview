@@ -99,11 +99,45 @@ bar2();      //jmnote
 //bar2()함수는 정상적으로 실행위치에서 가장 가까운 전역변수 a2인 jmnote를 출력시킨다.
 
 
-/*Topic3 : 렉시컬 스코프와 스코프 체인
+/*Topic 3) 렉시컬 스코프와 스코프 체인
 쓴이는 렉시컬 스코프와 스코프 체인에 대해 완벽히 이해했다고는 할수는 없다. 하지만 여러 블로그와 포스팅을 보면서 이해한것을 토대로 써본다.
 출처 : https://leehwarang.github.io/2019/10/07/scope.html
 
 스코프체인 : 식별자를 찾기위해 계속해서 상위 스코프로 가는것
 렉시컬스코프 : (함수가 중첩되어있을때) 내부 함수에 찾는 식별자가 없다면 상위 스코프에서 식별자를 찾아 나간다.
+ */
+
+/* Topic 4) typeof로 얻을수있는 값은 7가지로 ubn f sos 이다 (undefined boolean number function symbol object string)
+ 그중에서 원시타입은 undefined boolean number symbol string + null 이 있고
+ 참조타입은 object function array가 있다.
+ 원시타입중에서 4가지만 래퍼객체(객체를 호출한것처럼 객체화)로 사용이 가능하다. string number boolean symbol타입
+ */
+
+/* Topic 5) 함수에 대해서 (구체적으로는 project 3.5.js 파일 참조)
+
+함수를 정의하는 방식
+1. 함수 선언문
+2. 함수 표현식
+3. function 생성자
+
+함수를 호출하는 방식
+1. 함수 호출
+2. 객체의 메소드 호출
+3. 생성자 함수 호출
+4. apply, call, bind 사용
+
+Topic 6) 다양한 정의들에 대하여
+
+scope : 식별자의 유효범위
+
+Hosting : 선언부를 제일 위로 끌어올리는 것
+
+TDZ : 선언전에 변수를 사용하는 것을 허용하지 않는 범위 (zone)
+
+클로저
+1. 반환된(return) 내부함수가 자신이 선언되었을때의 환경을 기억하여 자신이 선언되었을때의 환경 밖에서 호출되어도 그 환경에 접근하는 함수
+2. 자신이 생성될때의 환경을 기억하는 함수(전생기억) => 과거의 상태를 기억(유지)하기위해서
+
+
  */
 
