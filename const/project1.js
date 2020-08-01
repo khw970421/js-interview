@@ -40,7 +40,7 @@ console.log(h1);     //15의 결과 출력 : var는 함수스코프로 인해서
 
 
 
-//scope chain:변수가 스코프안에 선언되어있지 않는다면 그 변수를 찾기위해 계속해서 부모 scope로 올라간다.
+//scope chain:변수가 스코프안에 선언되어있지 않는다면 그 변수를 찾기위해 계속해서 부모 scope로 올라간다. ( 변수 자신 찾기)
 let hj=10;
 function zz(){
     console.log(hj);        //스코프안에 존재하지않음
