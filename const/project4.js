@@ -99,12 +99,6 @@ var toggle = (function () {
 
 
 
-// ② 이벤트 프로퍼티에 클로저를 할당
-toggleBtn.onclick = toggle;
-</script>
-</body>
-</html>
-
 
 //객체 생성 3가지 방법
 
