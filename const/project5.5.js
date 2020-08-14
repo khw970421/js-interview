@@ -22,6 +22,14 @@ console.log(a.next());  //yield로 반환값 4
 console.log(a.next());  //yield로 반환값 3
 console.log(a.next());  //yield로 반환값 undefined
 
+/*결과
+{ value: 6, done: false }
+{ value: 5, done: false }
+{ value: 4, done: false }
+{ value: 3, done: true }
+{ value: undefined, done: true }
+ */
+
 
 //제너레이터 함수
 arr = [3,4,5,6];
@@ -39,3 +47,11 @@ console.log(b.next());  //yield로 반환값 5
 console.log(b.next());  //yield로 반환값 4
 console.log(b.next());  //yield로 반환값 3
 console.log(b.next());  //yield로 반환값 undefined
+
+/*결과
+{ value: 6, done: false }
+{ value: 5, done: false }
+{ value: 4, done: false }
+{ value: 3, done: true }
+{ value: undefined, done: true }
+ */
