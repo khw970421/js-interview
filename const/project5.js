@@ -112,7 +112,7 @@ console.log(typeof NP, typeof P());     //object object
 console.log(NP.next()); //{ value: 10, done: false }
 console.log(NP.next()); //{ value: 11, done: false }
 console.log(P().next()); //{ value: 10, done: false }
-console.log(P().next()); //{ value: 11, done: false }
+console.log(P().next()); //{ value: 10, done: false }       (8.14) 결과 오타수정
 
 console.log(NP);
 console.log(P());
