@@ -1,4 +1,7 @@
-/* 이터러블은 iterable(=반복가능)이란 뜻으로 이터러블 객체는 반복가능한 객체로 이에 포함되는것은
+/*제너레이터 함수 : 이터러블, 이터레이터 객체를 만드는 손쉬운 방법 (함수인데 객체를 반환)
+  이터레이터 객체 : next() 메소드를 구현하고 있고, done과 value 속성을 가진 객체를 반환하는 객체
+
+ 이터러블은 iterable(=반복가능)이란 뜻으로 이터러블 객체는 반복가능한 객체로 이에 포함되는것은
 String,Array,TypedArray,Map,Set 이 있다.
 반복을통해 문자열을 배열로 만들기도 한다.
 
@@ -86,7 +89,7 @@ console.log(h.next());  //{ value: 3, done: false }     는 yield 2이후부터 
 // 또 다시 next 메소드를 호출하면 중단된 위치에서 다시 실행(resume)이 시작하여 다음 만나는 yield 문까지 실행되고 또 다시 일시 중단된다.
 
 
-/*제너레이터 정리
+/*제너레이터 정리 (이터러블, 이터레이터 객체를 만드는 손쉬운 방법)
 function* 선언 (끝에 별표가 있는 function keyword) 은 generator function 을 정의하는데, 이 함수는 Generator 객체를 반환합니다.
  함수를 정의하는 방법은 함수 선언과 함수 표현식 2가지가 있다. => 함수를 정의하려면 2가지 방법을 써야한다.
  쓴이는 함수선언식으로도 시도를 해봤으나 이는 제대로 결과가 나오지않는것을 알수있다.
@@ -98,7 +101,7 @@ function* NoProblem() {
         yield i++;
     }
 }
-let NP =NoProblem();
+let NP =NoProblem();            // generator 함수를 호출해 받은 iterator 객체를 변수에다 할당하여 사용하기 때문에 하나의 공간을 사용한다.
 
 let P=function* Problem() {
     let i = 10;
@@ -113,6 +116,8 @@ console.log(NP.next()); //{ value: 10, done: false }
 console.log(NP.next()); //{ value: 11, done: false }
 console.log(P().next()); //{ value: 10, done: false }
 console.log(P().next()); //{ value: 10, done: false }       (8.14) 결과 오타수정
+// P().next(); 를 호출할 때마다, 공간을 새로 만들어서 쓰기 때문에, P().next(); 들은 각각 다른 공간을 사용하는 것이다.
+// 그리고 함수를 호출만 했기 때문에 statement 가 끝나면 공간이 사라지게 되는 것이다.      by eyabc
 
 console.log(NP);
 console.log(P());
@@ -143,3 +148,22 @@ __proto__: Generator
 이를 통해 i의 값이 NP는 12로 되어있고 P()는 undefined로 결과가 나오는 것을 통해 함수선언문으로는 불가능하다는 것을 알수있다. (비슷해보이지만)
 따라서 Generator함수를 쓰기위해서는 함수 선언과 함수 표현식 2가지를 사용해야한다. (함수선언식으로는 정상적 next()사용이 어렵다 생각)
  */
+
+// 배열에대해 하나하나 출력하기
+const aqd = [10,3,5,7,12,4];
+const length = aqd.length;
+function* k(){
+    let i=0;
+    while (i<length) {      //길이만큼 반복해서 return을 배열의 값들을 차례로한다.
+        yield a[i++];
+    }
+}
+
+let p = k();        // generator 함수를 호출해 받은 iterator 객체를 변수에다 할당하여 사용하기 때문에 하나의 공간을 사용한다.
+while(1){
+    let h = p.next();       //객체에 next()함수를 사용한 결과(object)를 저장한다.( value :  , done : )
+    if(h.done === true)     //배열이 끝나기전까지 반복을 계속진행한다. (p.next()를 반복)
+        break;
+    else
+        console.log(h.value,h.done);
+}
