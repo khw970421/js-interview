@@ -42,7 +42,7 @@ class Person {
 }
 // 에러: Unexpected token
 
-// 클래스는 사실 함수이다. =>함수표현식과 함수선언식 2가지 가능
+// 클래스는 사실 함수이다. =>함수표현식과 함수선언식 2가지 가능 (console.log(p)를 하면 function이 나온다)
 console.log(typeof user2); //function
 
 //함수선언식
@@ -174,3 +174,5 @@ m.e();
 클래스 속성 : shift_cooltime
 인스턴스 : mei라는 객체를 통해 만들어낸 m
  */
+
+
