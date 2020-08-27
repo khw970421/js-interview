@@ -95,9 +95,9 @@ console.log(objA.x)     //객체를 같이 참조하므로 값이 변경되어 1
 let objA1={
     x:10
 }
-let value=objA1.x;
-value=100;
-console.log(objA1.x)    //객체를 복사하므로 10은 변하지않고 10으로 출력
+let value=objA1.x; //객체 x의 프로퍼티 값 자체를 복사하여 value에 저장(참조 x)
+value=100; //value에 저장된 값 10을 100으로 수정
+console.log(objA1.x) // objA1.x는 value의 변화에 영향이 없이 값은 10으로 유지
 
 //get과 set
 //객체를 이용한 get set
