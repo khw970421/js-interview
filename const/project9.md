@@ -64,7 +64,13 @@ console.log(months);    //console에 출력
 3) AMD → define - require 
 4) Browser →
 
-AMD는 AMD(Asynchronous Module Definition) 의 약자( CommonJS 독립한 그룹)  
+AMD는 AMD(Asynchronous Module Definition) 의 약자( CommonJS 독립한 그룹)
+AMD 그룹은 비동기 상황에서도 JavaScript 모듈을 쓰기 위해 CommonJS에서 함께 논의하다 합의점을 이루지 못하고 독립한 그룹  
+비동기 환경에서도 매우 잘 동작, 서버사이드에서도 동일한 코드로 동작 (정웅님 내용 피드백)
+
+CommonJs는 자바스립트를 브라우저에서 뿐만아니라 서버사이드에서도 사용하기 위해 만들어진 모듈 스펙  
+CommonJS 는 특유의 동기적인 특성 때문에 보통 server-side 개발에 더 적합하다 한다
+ 
 CommonJS, ESM 모두 동기식 로딩 방식을 채택하고 있습니다
 따라서 로드한 모듈이 아직 사용되지 않았음에도, 미리 로딩해야 합니다
 
