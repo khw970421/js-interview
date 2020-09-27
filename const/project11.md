@@ -7,17 +7,20 @@
 프로퍼티 키 :  프로퍼티를 식별하기 위한 식별자(identifier)다. => 키 값을 통해서 각각의 다른 프로퍼티를 구분(식별)할수있다.    
  객체 지향의 상속 개념과 같이 부모 객체의 프로퍼티 또는 메소드를 상속받아 사용할 수 있게 한다. 이러한 부모 객체를 Prototype(원형) 객체 또는 줄여서 Prototype(프로토타입)이라 한다  
 프로퍼티 값이 함수일 경우, 일반 함수와 구분하기 위해 메소드라 부른다.
+<hr/>
+
 ### 2. 객체 생성
- ####case 1. 객체 리터럴 이용
+case 1. 객체 리터럴 이용
 
 const a = {};  
 const b = { x: 0, y: 0 };
 
- ####case 2. new 연산자 이용
+case 2. new 연산자 이용
 
 const a = new Object();  
 const b = new Array();  
 
+<hr/>
 
 ### 3. hasOwnProperty
 객체.hasOwnProperty(속성명)ㅡ 객체의 속성이 상속받지 않은 속성인지 알려줌. 자신의 속성이면 true, 부모의 속성이거나 아예 속성이 아니면 false를 반환.  
@@ -30,12 +33,14 @@ obj.hasOwnProperty("example"); // true
 obj.toString; // function toString() { [native code] }      모든 객체의 최상위 객체인 object가 가진 toString이다.
 obj.hasOwnProperty("toString"); // false            obj가 자신의 속성이 아닌 최상위 객체의 속성이므로 false return
 ```
+<hr/>
 
 ### 4. isPrototypeOf
 객체.isPrototypeOf(대상)ㅡ 객체가 대상의 조상인지 알려준다.
+<hr/>
 
 ### 5. 프로토타입에 대해서 (from 생활코딩 강의)
-객체 : 서로 연관된 변수와 함수를 그룹핑하고 이름을 붙인것
+객체 : 서로 연관된 변수와 함수를 그룹핑하고 이름을 붙인것  
 this : 메소드가 속해있는 객체를 가르키는 특수한 약속 (편하게 무언가를 수정하면 수정하는 다른 것도 줄이려고)
 #### this예시
 example) 이 경우는 만약 var kim부분을 ki로 바꾸거나 할 경우 sum함수 안에 있는 값도 ki로 전부 바꿔줘야 동작한다. 
@@ -65,6 +70,8 @@ var kim = {
 //console.log("kim.sum(kim.first, kim.second)", kim.sum(kim.first, kim.second));
 console.log("kim.sum(kim.first, kim.second)", kim.sum());
 ``` 
+<hr/>
+
 #### prototype 예시
 원래코드
 ```js
@@ -76,7 +83,7 @@ function Person(name, first, second){
     this.sum = function(){
         return 'prototype : '+(this.first+this.second);
     }
-}   //생성자 함수(constructor)
+}  
 
 
 var kim = new Person('kim', 10, 20);
@@ -97,7 +104,7 @@ Person.prototype.sum = function(){
     return 'prototype : '+(this.first+this.second);
 }
  
-var kim = new Person('kim', 10, 20);
+var kim = new Person('kim', 10, 20);  //생성자 함수(constructor)인 Person
 var lee = new Person('lee', 10, 10);
 console.log("kim.sum()", kim.sum());
 console.log("lee.sum()", lee.sum());
@@ -105,6 +112,10 @@ console.log("lee.sum()", lee.sum());
 원래코드를 수정한코드로 바꾼후 장점 
 1. Person이라는 생성자 함수안에 sum을 정의하는것이 들어가 있지 않기때문에 sum부분이 객체가 만들어질때마다 실행되지않는다.(성능,메모리절약)
 2. 하나의 sum 함수를 수많은 객체들이 같이 쓸수있어 (성능,메모리 절약)
+
+Person.prototype.sum이란 Person이라는 생성자함수의 공통적으로 사용할 sum이라는 메소드를 만드는 것이다.  
+(Person이라고하는 생성자 함수의 prototype 즉 원형을 정한다.)
+<hr/>
 
 #### kim이라는 부분만 바꾸고 싶을때
 ```js
@@ -131,11 +142,13 @@ console.log("lee.sum()", lee.sum());
 1) kim.sum()의 경우 kim.sum이라는 것 자체가 있는지 판단하는데 kim 자신이 kim.sum을 가지므로 존재하는 것을 return한다.
 2) lee.sum()의 경우 lee.sum이라는 것 자체가 있는지 판단하는데 lee 자신이 lee.sum을 가지지않으므로 이 객체의 생성자인 Person의 Prototype이라는 것의 sum이 정의되어있는지를 확인해 이를 return한다.
 
+<hr/>
 
-
+####Constructor
 
 constructor : 객체가 만들어지기 직전에 실행되기로 약속된 함수  
-class를 이용한 생성자함수 사용법
+ 
+case 1) class를 이용한 생성자함수 사용법
 ```js
 class Person{
     constructor(name, first, second){
@@ -148,7 +161,7 @@ class Person{
 var kim = new Person('kim', 10, 20);        //kim 객체가 만들어지기 전에 constructor가 실행이 되어 값들이 저장된다.
 console.log('kim', kim);
 ```
-그냥 function 이용한 생성자함수 사용법
+case 2) 그냥 function 이용한 생성자함수 사용법
 ```js
 function Person1(name,first,second){
     this.name = name;
@@ -158,11 +171,6 @@ function Person1(name,first,second){
 var kim1 = new Person1('kim', 10, 20);        //kim 객체가 만들어지기 전에 constructor가 실행이 되어 값들이 저장된다.
 console.log('kim', kim);
 ```
-
-
-
-
-
 
 생성자는 기본적으로 함수이다.  
 함수를 호출할때 new를 붙이게되면 단순한 함수가 아니라 생성자 함수가 된다.  
