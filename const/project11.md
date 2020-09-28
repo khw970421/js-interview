@@ -190,3 +190,88 @@ Sub.prototype = new Super();
 var o = new Sub();
 console.log(o.ultraProp);
 ```
+<hr/>
+
+#### 객체간의 상속
+case1) __proto__ 사용
+```js
+var superObj = {superVal:'super'}
+var subObj = {subVal:'sub'}
+subObj.__proto__ = superObj;
+console.log('subObj.subVal =>', subObj.subVal);
+console.log('subObj.superVal =>', subObj.superVal);
+subObj.superVal = 'sub';
+console.log('superObj.superVal =>', superObj.superVal);
+```
+
+case2) Object.create 사용
+```js
+var superObj = {superVal:'super'}
+// var subObj = {subVal:'sub'}
+// subObj.__proto__ = superObj;
+var subObj = Object.create(superObj);
+subObj.subVal = 'sub';
+debugger;
+console.log('subObj.subVal =>', subObj.subVal);
+console.log('subObj.superVal =>', subObj.superVal);
+subObj.superVal = 'sub';
+console.log('superObj.superVal =>', superObj.superVal);
+```
+<hr/>
+
+#### 객체와 함수 그리고 call() bind()
+call()은 첫번째인자로 내부적으로 this를 무엇으로 할건지, 두번째부터 인자 값이 나타난다.  
+sum()은 어떤 객체에도 속하지않지만 이를 쓰기위해서 .call()을 사용한다.  
+사실 sum() === sum.call()이나 같은것이나 call()은 this를 받을 수 있기때문이다.  
+call은 실행할때 함수의 context 즉 this의 값을 바꾼다.
+```js
+var kim = {name:'kim', first:10, second:20}
+var lee = {name:'lee', first:10, second:10}
+function sum(prefix){
+    return prefix+(this.first+this.second);
+}
+// sum();
+console.log("sum.call(kim)", sum.call(kim, '=> ')); //apply
+console.log("lee.call(kim)", sum.call(lee, ': '));
+```
+
+bind()는 어떤함수의 내부적으로 this의 값을 영구적으로 바꾸는 **새로운 함수**를 만든다. 
+```js
+var kim = {name:'kim', first:10, second:20}
+var lee = {name:'lee', first:10, second:10}
+function sum(prefix){
+    return prefix+(this.first+this.second);
+}
+// sum();
+console.log("sum.call(kim)", sum.call(kim, '=> ')); //apply
+console.log("lee.call(kim)", sum.call(lee, ': '));
+var kimSum = sum.bind(kim, '-> ');
+console.log('kimSum()', kimSum());
+```
+
+#### prototype, __proto__
+
+```js
+function Person(name,first,second){
+    this.name=name;
+    this.first=first;
+    this.second=second;
+}   
+// 이 경우 객체가 2개가 생기는데 하나는 Person 객체이고 다른 하나는 Person.prototype 객체이다.
+// Person의 prototype은 Person's Prototype객체를 가르키고  Person's Prototype객체의 constructor는 Person을 가르킨다.
+
+console.log(Person===Person.prototype.constructor)   // 즉 이것이 true다
+
+Person.prototype.sum = function(){
+    return this.first+this.second;
+}
+
+var kim =new Person('kim',10,20)    //kim객체는 Person.prototype을 가르킨다.
+
+var lee = new Person('lee',10,10)   //lee객체는 Person.prototype을 가르킨다.
+
+console.log(kim.sum());             //kim객체내에서 sum()을 찾아 없으니 Person.prototype에서 찾아 sum()을 찾는다.
+console.log(Person.prototype.sum.call(kim));
+console.log(Person.prototype===kim.__proto__);   //true
+
+```
