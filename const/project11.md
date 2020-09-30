@@ -169,7 +169,7 @@ function Person1(name,first,second){
     this.second = second;
 }
 var kim1 = new Person1('kim', 10, 20);        //kim 객체가 만들어지기 전에 constructor가 실행이 되어 값들이 저장된다.
-console.log('kim', kim);
+console.log('kim', kim1);
 ```
 
 생성자는 기본적으로 함수이다.  
@@ -275,3 +275,22 @@ console.log(Person.prototype.sum.call(kim));
 console.log(Person.prototype===kim.__proto__);   //true
 
 ```
+<hr/>
+
+#### 같은 의미
+```js
+let obj = {
+    a:10
+}; // 이 코드는
+// let obj = new Object(); // 와 같은 의미이다.
+
+function Object(a)
+{
+    this.a = a;
+}
+let obj2 = new Object(10)
+
+console.log(obj2.a, obj.a)
+
+```
+결국 let obj ={}와 let obj = new Object()는 같은 의미이다. 
