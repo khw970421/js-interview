@@ -39,7 +39,7 @@ obj.hasOwnProperty("toString"); // false            obj가 자신의 속성이 �
 객체.isPrototypeOf(대상)ㅡ 객체가 대상의 조상인지 알려준다.
 <hr/>
 
-### 5. 프로토타입에 대해서 (from 생활코딩 강의)
+### 5. 프로토타입에 대해서 (from 생활코딩 강의 )
 객체 : 서로 연관된 변수와 함수를 그룹핑하고 이름을 붙인것  
 this : 메소드가 속해있는 객체를 가르키는 특수한 약속 (편하게 무언가를 수정하면 수정하는 다른 것도 줄이려고)
 #### this예시
@@ -144,7 +144,7 @@ console.log("lee.sum()", lee.sum());
 
 <hr/>
 
-####Constructor
+#### Constructor
 
 constructor : 객체가 만들어지기 직전에 실행되기로 약속된 함수  
  
@@ -235,7 +235,7 @@ console.log("sum.call(kim)", sum.call(kim, '=> ')); //apply
 console.log("lee.call(kim)", sum.call(lee, ': '));
 ```
 
-bind()는 어떤함수의 내부적으로 this의 값을 영구적으로 바꾸는 **새로운 함수**를 만든다. 
+bind()는 어떤함수의 내부적으로 this의 값을 영구적으로 바꾸는 **새로운 함수**를 만들어 반환한다. 
 ```js
 var kim = {name:'kim', first:10, second:20}
 var lee = {name:'lee', first:10, second:10}
@@ -294,3 +294,7 @@ console.log(obj2.a, obj.a)
 
 ```
 결국 let obj ={}와 let obj = new Object()는 같은 의미이다. 
+
+
+
+출처 : 생활코딩 https://opentutorials.org/module/4047
