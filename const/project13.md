@@ -163,7 +163,7 @@ btn.addEventListener("click", function() {
 ```
 
 ### 6. 이벤트 전파
-####1) 이벤트 버블링
+#### 1) 이벤트 버블링
 ```html
 <!DOCTYPE html>
 <html>
@@ -209,7 +209,7 @@ function logEvent(event) {
 
 브라우저는 특정 화면 요소에서 이벤트가 발생했을 때 그 이벤트를 (해당 dom위치까지 찾고 다시 위로 ) 최상위에 있는 화면 요소까지 이벤트를 전파시킨다.
 
-####2) 이벤트 캡쳐
+#### 2) 이벤트 캡쳐
 특정 요소에서 이벤트가 발생했을 때 해당 이벤트가 더 하위의 요소들로 전달되어 가는 특성이다.
 
 ```js
@@ -232,10 +232,10 @@ false 또는 미설정하면 버블링으로 전파되는 이벤트를 캐치한
 즉, 이벤트가 발생했을 때 캡처링과 버블링은 순차적으로 발생한다. (그림을 보니 확실히 이해가되었다.)
 ```
 
-####3) 이벤트 버블링 캡쳐 막기 =>stopPropagation() 웹 API를 사용
+#### 3) 이벤트 버블링 캡쳐 막기 =>stopPropagation() 웹 API를 사용
 원하는 출력 전에 stopPropagation() 을 코드로 작성하면 연결되어 계속 사용하지않고 이벤트 제어
 
-###7. event.stopPropagation() vs event.preventDefault() 
+### 7. event.stopPropagation() vs event.preventDefault() 
 stopPropagation 메소드는 이벤트가 element로 전파되는 것을 막기 위한 함수이다.
 preventDefault 메소드는 현재 이벤트의 기본 동작을 중지 하기 위해 사용한다. ex) a,input,textarea
 
