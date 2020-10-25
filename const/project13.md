@@ -3,7 +3,7 @@
 
 기본적인 브라우저 원리 : 원하는 정보를 가진 서버에 요청을하여 해당하는 웹문서를 받아 브라우저의 렌더링엔진은 웹문서를 로드한 후, 브라우저가 이해할수있는 구조로 메모리에 적재한다. 
 
-### 0. window 객체 : 자바스크립트의 최상위객체이자 전역객체이면서 모든 객체가 소속된 객체
+### 0. window 객체 : 자바스크립트의 최상위객체이자 전역객체이면서 모든 객체가 소속된 '브라우저 객체'
 Dom, Bom, JS core가 속해있다. 
 
 ### 1. BOM :  브라우저와 관련된 객체들의 집합  
@@ -67,7 +67,7 @@ DOM은 브라우저 창 안의 웹문서 내용 (문서와 관련)
 ### 3. Reflow :Render Tree와 각 요소들의 크기와 위치를 다시 계산하는 것
 ### Repaint : 이 Reflow 과정이 끝난 후 재 생성된 렌더 트리를 다시 그리게 되는데 렌더링 트리를 화면에 픽셀로 변환
 
-repaint 예시   
+reflow 예시(레이아웃에 영향)
 https://oyg0420.tistory.com/entry/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-Reflow-%EC%99%80-Repaint
 
 1. 노드의 추가 또는 제거시
@@ -94,6 +94,21 @@ el.className = 'changed';
 // 1 번의 리플로우 발생
 ```
 따라서 리플로우의 발생을 줄일수록 repaint(redraw)도 줄어 시간을 줄이게된다. 
+```
+하지만 무조건 Reflow가 일어나야 Repaint가 일어나는것은 아닙니다.   
+background-color, visibility와 같이 레이아웃에는 영향을 주지 않는 스타일 속성이 변경되었을 때는 
+Reflow를 수행할 필요가 없기 때문에 Repaint만 수행하게 됩니다.
+출처: https://boxfoxs.tistory.com/408 [박스여우 - BoxFox]
+```
+
+아래는 각각 Reflow, Repaint가 일어나는 CSS 속성들 입니다. Reflow가 일어나면 Repaint는 필연적으로 일어나야 하기 때문에 가능하다면 Reflow가 발생하는 속성보다 Repaint 만 발생하는 속성을 사용하는것이 좋습니다.
+![repaint](picture/reflow_repaint.png)
+ 	 	 
+또한 Reflow Repaint가 일어나지 않는 transform, opacitiy와 같은 속성도 있습니다. 따라서 left, right, width, height 보다 transform을, visibility/display 보다 opacitiy를 사용하는 것이 성능 개선에 도움이 됩니다.
+
+
+
+출처: https://boxfoxs.tistory.com/408 [박스여우 - BoxFox]
 
 ### 4. Dom api ( DOM은 또한 W3C가 표준화한 여러 개의 API의 기반이 된다. )
 => 왜냐? Dom을 통해 js를 조작하여 html의 수정이 가능하게 하기 때문에 그 사이에 있는 DOM은 마치 api이기때문
