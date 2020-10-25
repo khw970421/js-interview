@@ -67,6 +67,9 @@ DOM은 브라우저 창 안의 웹문서 내용 (문서와 관련)
 ### 3. Reflow :Render Tree와 각 요소들의 크기와 위치를 다시 계산하는 것
 ### Repaint : 이 Reflow 과정이 끝난 후 재 생성된 렌더 트리를 다시 그리게 되는데 렌더링 트리를 화면에 픽셀로 변환
 
+### 중요) DOM이 화면을 변화시키는가? => 변화시킨다 => reflow 발생(Dom트리 변화=>CSSOM변화 =>Render tree 변화) => repaint를 통해 브라우저 출력
+### 중요) DOM이 화면을 변화시키는가? => 변화시킨다 => reflow 발생(CSSOM변화 => Render tree 변화)=> repaint를 통해 브라우저 출력
+
 reflow 예시(레이아웃에 영향)
 https://oyg0420.tistory.com/entry/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-Reflow-%EC%99%80-Repaint
 
