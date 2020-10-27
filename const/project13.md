@@ -33,7 +33,7 @@ alert(output);
 출처: https://gangzzang.tistory.com/entry/자바스크립트JavaScript-브라우저-객체-모델Browser-Object-Model [갱짱.study]
 ```
 
-### 2. DOM : 웹페이지를 (자바스크립트로) 제어하기 위한 객체 모델 => 브라우저가 웹문서를 이해할수있게 구성된 것
+### 2.1 DOM : 웹페이지를 (자바스크립트로) 제어하기 위한 객체 모델 => 브라우저가 웹문서를 이해할수있게 구성된 것
 
 => dom은 서버를 통해 받아온 문서(index.html)을 객체로 만들어 이를 js를 통해 제어할수있게 하는 것이라 생각
 
@@ -63,14 +63,16 @@ ex)
 BOM은 브라우저 창 안의 속성 (문서외에 나머지와 관련)
 DOM은 브라우저 창 안의 웹문서 내용 (문서와 관련)
 
+### 2.2 Dom tree : 모델은 객체의 트리로 구성되는데 이것을 DOM tree라 한다. (Dom의 집합)
+
 
 ### 3. Reflow :Render Tree와 각 요소들의 크기와 위치를 다시 계산하는 것
-### Repaint : 이 Reflow 과정이 끝난 후 재 생성된 렌더 트리를 다시 그리게 되는데 렌더링 트리를 화면에 픽셀로 변환
+#### Repaint : 이 Reflow 과정이 끝난 후 재 생성된 렌더 트리를 다시 그리게 되는데 렌더링 트리를 화면에 픽셀로 변환
 
-### 중요) DOM이 화면을 변화시키는가? => 변화시킨다 => reflow 발생(Dom트리 변화=>CSSOM변화 =>Render tree 변화) => repaint를 통해 브라우저 출력
-### 중요) CSSOM이 화면을 변화시키는가? => 변화시킨다 => reflow 발생(CSSOM변화 => Render tree 변화)=> repaint를 통해 브라우저 출력
-### 중요) 브라우저 크기 변화시키는가? => 변화시킨다 => reflow 발생 => repaint를 통해 브라우저 출력
-### 중요) 즉 화면에 생기는 모든 변화가 reflow를 가져온다.
+#### 중요) DOM이 화면을 변화시키는가? => 변화시킨다 => reflow 발생(Dom트리 변화=>CSSOM변화 =>Render tree 변화) => repaint를 통해 브라우저 출력
+#### 중요) CSSOM이 화면을 변화시키는가? => 변화시킨다 => reflow 발생(CSSOM변화 => Render tree 변화)=> repaint를 통해 브라우저 출력
+#### 중요) 브라우저 크기 변화시키는가? => 변화시킨다 => reflow 발생 => repaint를 통해 브라우저 출력
+#### 중요) 즉 화면에 생기는 모든 변화가 reflow를 가져온다.
 
 
 reflow 예시(레이아웃에 영향)
