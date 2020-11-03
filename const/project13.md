@@ -140,6 +140,63 @@ Reflow를 수행할 필요가 없기 때문에 Repaint만 수행하게 됩니다
 
 ```
 
+example
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트의 디폴트 행동 취소</title>
+
+</head>
+<body id='body'>
+<button id='1'>새로운 요소 추가</button>
+<button id='2'>새로운 요소 제거</button>
+
+<p id='target'>바뀌는 대상</p>
+<button id='3'>위에 꺼 속성 변경</button>
+<button id='4'>위에꺼 css스타일변경</button>
+<button id='5'>위에꺼 이벤트 추가</button>
+    
+</body>
+ <script>
+let body = document.getElementById('body');
+let id1 = document.getElementById('1')
+let id2 = document.getElementById('2')
+let id3 = document.getElementById('3')
+let id4 = document.getElementById('4')
+let id5 = document.getElementById('5')
+let target = document.getElementById('target')
+let div=document.createElement('div');
+
+id1.addEventListener('click',f1);
+id2.addEventListener('click',f2);
+id3.addEventListener('click',f3);
+id4.addEventListener('click',f4);
+id5.addEventListener('click',f5);
+
+function f1(){
+	div.innerHTML = '새로운 추가';	//div태그를 사용한 Dom객체에 새로운 내용 삽입
+	body.appendChild(div);			//Dom 트리에 삽입 (body를 대상으로 아래에 child로 div를 삽입, appendChild 괄호에 ''쓰면 오류)
+}
+function f2(){
+	body.removeChild(div);			//Dom 트리에서 제거
+}
+function f3(){
+	target.setAttribute('class','T');	//클래스 속성 추가
+}
+function f4(){
+	target.style.backgroundColor='red';		//색깔 변경
+}
+function f5(){
+	target.setAttribute('onclick','f1()');	//onclick 추가
+}
+
+</script>
+</html>
+
+```
+
 ### 4.1) 조작하고자하는 요소를 선택 또는 탐색한다.
 
 1) document.getElementById(id)
