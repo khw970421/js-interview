@@ -119,7 +119,7 @@ Reflow를 수행할 필요가 없기 때문에 Repaint만 수행하게 됩니다
 출처: https://boxfoxs.tistory.com/408 [박스여우 - BoxFox]
 
 ### 4. Dom api ( DOM은 또한 W3C가 표준화한 여러 개의 API의 기반이 된다. )
-=> 왜냐? Dom을 통해 js를 조작하여 html의 수정이 가능하게 하기 때문에 그 사이에 있는 DOM은 마치 api이기때문
+=> 왜냐? JS를 통해 DOM을 조작하여 Dom tree의 수정이 가능하게 하기 때문에 그 사이에 있는 DOM은 마치 api이기때문
 
 ```
 이를 통해 가능한 것은  
