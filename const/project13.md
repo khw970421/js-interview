@@ -228,14 +228,45 @@ https://wonism.github.io/reflow-repaint/
 
 
 ### 5. 이벤트
+이벤트 리스너를 작성하는 3가지 방법
+case 1) html 태그 내에 작성
+```html
+<p onclick="handle(this)">Click</p>
+
+<script>
+function handle(m){
+console.log(m);  //출력내용 : <p onclick="k(this)">Click</p>
+}
+</script>
+```
+```
+특징
+1. 이 방식은 더 이상 사용되지 않으며 사용해서도 안된다. HTML과 Javascript는 역할이 다르므로 분리하는 것이 좋다.
+2. 하지만 오래된 코드에서 간혹 이 방식을 사용한 것이 있기 때문에 알아둘 필요는 있다
+```
+case 2) js에서 
 onclick으로 바인딩 된 이벤트 핸들러 (여러개의 사용할경우 하나만 동작)
 ```js
 btn.onclick = function() {
 				alert("Button clicked 1");
 			};
+
+```
+```
+function click(){
+    alert("Button clicked 1");
+}
+
+btn.onclick = click;        //click()은 에러가난다. click() 함수의 이름만 등록해야하므로 click으로한다. 
+
 ```
 
-addEventListener로 바인딩 된 이벤트 핸들러 (여러개 사용해도 동작)
+```
+특징 
+addEventListener와 다르게 전통적 DOM Event Handler 방식은 이벤트 핸들러에 하나의 함수만을 바인딩할 수 있다 (자주안쓰이는듯)
+=> addEventListener는 이벤트 핸들러에 여러개의 함수를 바인딩 가능
+```
+case 3) addEventListener로 바인딩 된 이벤트 핸들러 (여러개 사용해도 동작)
 ```js
 btn.addEventListener("click", function() {
 				alert("Button clicked 1");
