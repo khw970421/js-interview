@@ -252,7 +252,7 @@ btn.onclick = function() {
 			};
 
 ```
-```
+```js
 function click(){
     alert("Button clicked 1");
 }
@@ -271,6 +271,45 @@ case 3) addEventListener로 바인딩 된 이벤트 핸들러 (여러개 사용�
 btn.addEventListener("click", function() {
 				alert("Button clicked 1");
 			})
+```
+```js
+function click() {
+            alert("Button clicked 2");
+         }
+
+btn.addEventListener("click",click);        //click()아니다    이럴경우 클릭에 관계없이 실행됌
+```
+```
+특징
+대상요소.addEventListener('대상요소에 바인딩 되는 이벤트',함수명 or 함수자체)
+하나의 이벤트에 대해 하나 이상의 이벤트 핸들러를 추가할 수 있다.
+캡처링과 버블링을 지원한다.
+HTML 요소뿐만아니라 모든 DOM 요소에 대해 동작한다.
+```
+#### this 사용 
+```html
+<!DOCTYPE html>
+<html>
+   <body>
+      <button id="btn1" onclick='handle(this)'>Click me</button>        //onclick 사용
+      <button id="btn2">Click me</button>                               //addEventListener 사용
+
+
+      <script>
+         function handle(m){
+            console.log(m);  //this는 태그내용 자체를 가르키므로 : <p onclick="k(this)">Click</p>
+         }
+
+         var btn2 = document.getElementById("btn2");
+
+         btn2.addEventListener('click',function click(e){
+            console.log(this);      //this는 btn2 즉 태그 내용을 가르키므로 : <button id="btn2">Click me</button>
+            console.log(e);         //e는 event 자체를 나타내므로 : MouseEvent {isTrusted: true, screenX: 98, screenY: 97, clientX: 98, clientY: 26, …}
+         });
+
+      </script>
+   </body>
+</html>
 ```
 
 ### 6. 이벤트 전파
